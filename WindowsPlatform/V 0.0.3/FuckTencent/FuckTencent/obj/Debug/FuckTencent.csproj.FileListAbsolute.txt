@@ -2,8 +2,8 @@ D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\bin\Debug
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\bin\Debug\FuckTencent.exe
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\bin\Debug\FuckTencent.pdb
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\FuckTencent.csprojResolveAssemblyReference.cache
-D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\FuckTencent.csproj.GenerateResource.Cache
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\FuckTencent.exe
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\FuckTencent.pdb
 D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\WindowsFormsApp1.FuckTencent.resources
+D:\GitHub\Fuck-Tencent\WindowsPlatform\V 0.0.3\FuckTencent\FuckTencent\obj\Debug\FuckTencent.Properties.Resources.resources
