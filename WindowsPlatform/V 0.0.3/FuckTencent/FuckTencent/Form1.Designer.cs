@@ -49,19 +49,20 @@
             this.checkBoxUSB = new System.Windows.Forms.CheckBox();
             this.buttonHardware = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.timerUSB = new System.Windows.Forms.Timer(this.components);
             this.timerBT = new System.Windows.Forms.Timer(this.components);
             this.timerWifi = new System.Windows.Forms.Timer(this.components);
             this.timerLan = new System.Windows.Forms.Timer(this.components);
             this.timerQQ = new System.Windows.Forms.Timer(this.components);
-            this.timerBrowser = new System.Windows.Forms.Timer(this.components);
-            this.timer6 = new System.Windows.Forms.Timer(this.components);
-            this.timer7 = new System.Windows.Forms.Timer(this.components);
-            this.timer8 = new System.Windows.Forms.Timer(this.components);
-            this.timer9 = new System.Windows.Forms.Timer(this.components);
-            this.timer10 = new System.Windows.Forms.Timer(this.components);
-            this.timer11 = new System.Windows.Forms.Timer(this.components);
-            this.timer12 = new System.Windows.Forms.Timer(this.components);
+            this.timerExplorer = new System.Windows.Forms.Timer(this.components);
+            this.timerLOL = new System.Windows.Forms.Timer(this.components);
+            this.timerCF = new System.Windows.Forms.Timer(this.components);
+            this.timerTGame = new System.Windows.Forms.Timer(this.components);
+            this.timerQQSpd = new System.Windows.Forms.Timer(this.components);
+            this.timerQQui = new System.Windows.Forms.Timer(this.components);
+            this.timerDNF = new System.Windows.Forms.Timer(this.components);
+            this.timerPlayer = new System.Windows.Forms.Timer(this.components);
+            this.timerDownload = new System.Windows.Forms.Timer(this.components);
+            this.timerUSB = new System.Windows.Forms.Timer(this.components);
             this.tabControlInstruction.SuspendLayout();
             this.tabPageSoftware.SuspendLayout();
             this.tabPageHardware.SuspendLayout();
@@ -287,10 +288,6 @@
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Fuck Tencent";
             // 
-            // timerUSB
-            // 
-            this.timerUSB.Tick += new System.EventHandler(this.timerUSB_Tick);
-            // 
             // timerBT
             // 
             this.timerBT.Tick += new System.EventHandler(this.timerBT_Tick);
@@ -302,6 +299,50 @@
             // timerLan
             // 
             this.timerLan.Tick += new System.EventHandler(this.timerLan_Tick);
+            // 
+            // timerQQ
+            // 
+            this.timerQQ.Tick += new System.EventHandler(this.timerQQ_Tick);
+            // 
+            // timerExplorer
+            // 
+            this.timerExplorer.Tick += new System.EventHandler(this.timerExplorer_Tick);
+            // 
+            // timerLOL
+            // 
+            this.timerLOL.Tick += new System.EventHandler(this.timerLOL_Tick);
+            // 
+            // timerCF
+            // 
+            this.timerCF.Tick += new System.EventHandler(this.timerCF_Tick);
+            // 
+            // timerTGame
+            // 
+            this.timerTGame.Tick += new System.EventHandler(this.timerTGame_Tick);
+            // 
+            // timerQQSpd
+            // 
+            this.timerQQSpd.Tick += new System.EventHandler(this.timerQQSpd_Tick);
+            // 
+            // timerQQui
+            // 
+            this.timerQQui.Tick += new System.EventHandler(this.timerQQui_Tick);
+            // 
+            // timerDNF
+            // 
+            this.timerDNF.Tick += new System.EventHandler(this.timerDNF_Tick);
+            // 
+            // timerPlayer
+            // 
+            this.timerPlayer.Tick += new System.EventHandler(this.timerPlayer_Tick);
+            // 
+            // timerDownload
+            // 
+            this.timerDownload.Tick += new System.EventHandler(this.timerDownload_Tick);
+            // 
+            // timerUSB
+            // 
+            this.timerUSB.Tick += new System.EventHandler(this.timerUSB_Tick);
             // 
             // FuckTencent
             // 
@@ -348,19 +389,20 @@
         private System.Windows.Forms.CheckBox checkBoxCF;
         private System.Windows.Forms.CheckBox checkBoxQQSpd;
         private System.Windows.Forms.CheckBox checkBoxLOL;
-        private System.Windows.Forms.Timer timerUSB;
         private System.Windows.Forms.Timer timerBT;
         private System.Windows.Forms.Timer timerWifi;
         private System.Windows.Forms.Timer timerLan;
         private System.Windows.Forms.Timer timerQQ;
-        private System.Windows.Forms.Timer timerBrowser;
-        private System.Windows.Forms.Timer timer6;
-        private System.Windows.Forms.Timer timer7;
-        private System.Windows.Forms.Timer timer8;
-        private System.Windows.Forms.Timer timer9;
-        private System.Windows.Forms.Timer timer10;
-        private System.Windows.Forms.Timer timer11;
-        private System.Windows.Forms.Timer timer12;
+        private System.Windows.Forms.Timer timerExplorer;
+        private System.Windows.Forms.Timer timerLOL;
+        private System.Windows.Forms.Timer timerCF;
+        private System.Windows.Forms.Timer timerTGame;
+        private System.Windows.Forms.Timer timerQQSpd;
+        private System.Windows.Forms.Timer timerQQui;
+        private System.Windows.Forms.Timer timerDNF;
+        private System.Windows.Forms.Timer timerPlayer;
+        private System.Windows.Forms.Timer timerDownload;
+        private System.Windows.Forms.Timer timerUSB;
     }
 }
 
