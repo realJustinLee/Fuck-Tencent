@@ -134,6 +134,7 @@ def get_osinfo():
 
 # 唯一标识符
 def get_indentity(data):
+    global serial, uuid
     match_serial = re.compile(r"Serial Number: .*", re.DOTALL)
     match_uuid = re.compile(r"UUID: .*", re.DOTALL)
     if match_serial.search(data):

