@@ -12,13 +12,8 @@
 #############################################
 '''
 
-import socket
-import multi_process_test
 from ARP_attack import arp_attack
 from packet_investigate import main_start
-import argparse
-import os
-from multiprocessing import Process
 from utils import start_threading
 
 if __name__ == '__main__':

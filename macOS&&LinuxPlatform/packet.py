@@ -6,7 +6,7 @@ from configure import lol_ip_config
 from tools import *
 
 
-class Packet_ez(object):
+class PacketEz(object):
     def __init__(self, destination_ip, source_ip, destination_mac, source_mac, packet_itself, protocol):
         self.destination_ip = destination_ip
         self.source_ip = source_ip

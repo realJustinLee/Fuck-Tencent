@@ -3,14 +3,9 @@
 # Packet sniffer in python for Linux
 # Sniffs only incoming TCP packet
 
-import socket
-from struct import *
-import datetime
-import pcapy
-import sys
 from scapy.all import *
-from scapy.all import send
-from packet import Packet_ez
+
+from packet import PacketEz
 
 conf.promisc = 1
 conf.sniff_promisc = 1
@@ -29,7 +24,7 @@ def main_start():
         src_ip = packets[0][1].src
         dst_ip = packets[0][1].dst
 
-        packets_ez = Packet_ez(
+        packets_ez = PacketEz(
             destination_ip=dst_ip,
             source_ip=src_ip,
             destination_mac=dst_mac,

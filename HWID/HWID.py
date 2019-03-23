@@ -13,7 +13,7 @@ def sub_dict(form_dict, sub_keys, default=None):
 
 # 读取cpuinfo信息
 # dmidecode -t 4
-def read_cpuinfo():
+def read_cpu_info():
     cpu_stat = []
     with open('/proc/cpuinfo', 'r') as f:
         data = f.read()
@@ -23,7 +23,7 @@ def read_cpuinfo():
 
 
 # 读取fdisk信息
-def read_fdisk():
+def read_f_disk():
     p = subprocess.Popen('fdisk -l', stdout=subprocess.PIPE, shell=True)
     out = p.communicate()[0]
     info = []
@@ -35,7 +35,7 @@ def read_fdisk():
 
 
 # 读取dmidecode信息
-def read_dmidecode():
+def read_dmi_decode():
     p = subprocess.Popen('dmidecode -t 1', stdout=subprocess.PIPE, shell=True)
     return p.communicate()[0]
 
@@ -47,7 +47,7 @@ def read_ifconfig():
 
 
 # 返回cpu信息：CPU型号、颗数、核数
-def get_cpuinfo(data):
+def get_cpu_info(data):
     cpu_info = {}
     for i in data.splitlines():
         k, v = [x.strip() for x in i.split(':')]
@@ -58,7 +58,7 @@ def get_cpuinfo(data):
 
 
 # 返回每块硬盘大小
-def get_diskinfo(data):
+def get_disk_info(data):
     disk_info = {}
     m_disk = re.compile(r'^Disk\s/dev')
 
@@ -71,7 +71,7 @@ def get_diskinfo(data):
 
 
 # 返回硬件信息：品牌、型号
-def get_dmiinfo(data):
+def get_dmi_info(data):
     dmi_info = {}
     line_in = False
     for line in data.splitlines():
@@ -87,7 +87,7 @@ def get_dmiinfo(data):
 
 
 # 返回网卡及ip信息：网卡、IP址、MAC地址
-def get_ipinfo(data):
+def get_ip_info(data):
     data = (i for i in data.split('\n\n') if i and not i.startswith('lo'))
     ip_info = []
     ifname = re.compile(r'(eth[\d:]*|wlan[\d:]*)')
@@ -112,7 +112,7 @@ def get_ipinfo(data):
 
 
 # 返回内存及swap大小
-def get_meminfo():
+def get_mem_info():
     mem_info = {}
     with open('/proc/meminfo', 'r') as f:
         data = f.readlines()
@@ -123,7 +123,7 @@ def get_meminfo():
 
 
 # 返回操作信息
-def get_osinfo():
+def get_os_info():
     os_info = {}
     i = os.uname()
     os_info['os_type'] = i[0]
@@ -133,7 +133,7 @@ def get_osinfo():
 
 
 # 唯一标识符
-def get_indentity(data):
+def get_identity(data):
     global serial, uuid
     match_serial = re.compile(r"Serial Number: .*", re.DOTALL)
     match_uuid = re.compile(r"UUID: .*", re.DOTALL)
@@ -150,10 +150,18 @@ def get_indentity(data):
 
 
 if __name__ == "__main__":
-    ipinfo = get_ipinfo(read_ifconfig())
-    dmiinfo = get_dmiinfo(read_dmidecode())
-    cpuinfo = get_cpuinfo(read_cpuinfo())
-    diskinfo = get_diskinfo(read_fdisk())
-    meminfo = get_meminfo()
-    osinfo = get_osinfo()
-    identity = get_indentity(read_dmidecode())
+    ip_info = get_ip_info(read_ifconfig())
+    dmi_info = get_dmi_info(read_dmi_decode())
+    cpu_info = get_cpu_info(read_cpu_info())
+    disk_info = get_disk_info(read_f_disk())
+    mem_info = get_mem_info()
+    os_info = get_os_info()
+    identity = get_identity(read_dmi_decode())
+
+    print ip_info
+    print dmi_info
+    print cpu_info
+    print disk_info
+    print mem_info
+    print os_info
+    print identity

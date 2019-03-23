@@ -1,13 +1,11 @@
 # coding = utf-8
 
-import uuid
-import socket
-import sys
-from platform import system
-import struct
-import uuid
 import os
 import re
+import socket
+import struct
+import uuid
+from platform import system
 
 
 def get_mac_address():
@@ -15,10 +13,10 @@ def get_mac_address():
     return ":".join([mac[e:e + 2] for e in range(0, 11, 2)])
 
 
-def get_IPv4():
-    myname = socket.getfqdn(socket.gethostname())
-    myaddr = socket.gethostbyname(myname)
-    return myaddr
+def get_ip_v4():
+    my_name = socket.getfqdn(socket.gethostname())
+    my_addr = socket.gethostbyname(my_name)
+    return my_addr
 
 
 def get_gate_way():
@@ -30,7 +28,7 @@ def get_gate_way():
                     continue
                 return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16)))
     else:
-        inet = get_IPv4()
+        inet = get_ip_v4()
         default_gateway = ''
         for inet_element in inet.split('.')[0:3]:
             default_gateway = default_gateway + inet_element + '.'
@@ -41,20 +39,19 @@ def get_gate_way():
 def get_broadcast():
     ifconfig_file_like = os.popen('ifconfig')
     ifconfig = ifconfig_file_like.readlines()
-    net = []
-    boardcast = ''
+    broadcast = ''
     for lines in ifconfig:
-        searchObj = re.search(r'inet (.*) broadcast (.*)\n', lines, re.M | re.I)
+        search_obj = re.search(r'inet (.*) broadcast (.*)\n', lines, re.M | re.I)
         try:
-            boardcast = searchObj.group(2)
+            broadcast = search_obj.group(2)
         except:
             pass
-    return boardcast
+    return broadcast
 
 
 print '============='
 
-print get_IPv4()
+print get_ip_v4()
 print get_mac_address()
 print get_gate_way()
 print get_broadcast()

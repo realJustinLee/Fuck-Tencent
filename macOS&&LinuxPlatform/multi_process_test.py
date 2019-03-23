@@ -8,7 +8,7 @@ from multiprocessing import Process
 from scapy.all import *
 from scapy.all import send
 import binascii
-from packet import Packet_ez
+from packet import PacketEz
 
 '''
 def sniff_en():
@@ -68,8 +68,8 @@ import os
 
 
 # 子进程要执行的代码
-def run_proc():
-    while 1:
+def run_proc(name):
+    while (1):
         print 1
     print 'Run child process %s (%s)...' % (name, os.getpid())
 
